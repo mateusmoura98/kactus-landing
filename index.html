@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kactus | Grupo VIP de Ofertas no WhatsApp</title>
+<meta name="description" content="Entre no grupo VIP do WhatsApp da Kactus em Salvador e receba ofertas imperdíveis antes de todo mundo.">
+<meta property="og:title" content="Kactus | Grupo VIP de Ofertas no WhatsApp">
+<meta property="og:description" content="Ofertas exclusivas, avisos de estoque e brindes direto no seu WhatsApp.">
+<link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#040a06;
+    --card:rgba(255,255,255,0.04);
+    --card-border:rgba(255,255,255,0.09);
+    --text:#f2f5fa;
+    --text-dim:#8fa597;
+    --green:#25D366;
+    --green-dark:#128c40;
+    --violet:#22c55e;
+    --violet-2:#86efac;
+    --cyan:#facc15;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',-apple-system,sans-serif;
+    line-height:1.55;
+    overflow-x:hidden;
+    position:relative;
+  }
+  h1,h2,h3,.logo{font-family:'Space Grotesk',sans-serif;}
+  img{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1140px; margin:0 auto; padding:0 20px; position:relative; z-index:2;}
+
+  /* Animated futuristic background */
+  .bg-fx{
+    position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;
+  }
+  .orb{
+    position:absolute; border-radius:50%;
+    filter:blur(90px);
+    opacity:0.5;
+  }
+  .orb1{ width:520px; height:520px; top:-160px; left:-140px; background:var(--violet); animation:drift1 16s ease-in-out infinite; }
+  .orb2{ width:460px; height:460px; top:280px; right:-160px; background:var(--cyan); opacity:0.35; animation:drift2 18s ease-in-out infinite; }
+  .orb3{ width:400px; height:400px; bottom:-140px; left:30%; background:var(--green); opacity:0.22; animation:drift1 20s ease-in-out infinite reverse; }
+  @keyframes drift1{ 0%,100%{transform:translate(0,0);} 50%{transform:translate(60px,40px);} }
+  @keyframes drift2{ 0%,100%{transform:translate(0,0);} 50%{transform:translate(-50px,60px);} }
+  .grid-overlay{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size:46px 46px;
+    -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+    mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+  }
+  .noise{
+    position:absolute; inset:0; opacity:0.025; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(4,10,6,0.7);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--card-border);
+  }
+  .header-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 20px; max-width:1140px; margin:0 auto;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-weight:700; font-size:1.25rem; letter-spacing:0.2px;
+  }
+  .logo-mark{
+    width:38px; height:38px; border-radius:50%;
+    object-fit:cover;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.12), 0 0 24px -4px rgba(250,204,21,0.8);
+  }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:13px 24px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:0.95rem;
+    border:none;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .2s ease, filter .15s ease;
+    white-space:nowrap;
+    font-family:'Inter',sans-serif;
+  }
+  .btn:active{transform:scale(0.96);}
+  .btn-whatsapp{
+    background:linear-gradient(135deg, var(--green), var(--green-dark));
+    color:#04220f;
+    box-shadow:0 0 0 1px rgba(37,211,102,0.4), 0 10px 30px -8px rgba(37,211,102,0.85);
+  }
+  .btn-whatsapp:hover{filter:brightness(1.1); box-shadow:0 0 0 1px rgba(37,211,102,0.6), 0 14px 40px -6px rgba(37,211,102,1);}
+  .btn-small{padding:10px 18px; font-size:0.85rem;}
+  .btn-ghost{
+    background:rgba(255,255,255,0.06);
+    border:1px solid var(--card-border);
+    color:var(--text);
+    backdrop-filter:blur(8px);
+  }
+  .btn-ghost:hover{background:rgba(255,255,255,0.1);}
+
+  /* Hero */
+  .hero{
+    padding:80px 0 40px;
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:40px;
+    align-items:center;
+  }
+  .badge{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(37,211,102,0.1);
+    border:1px solid rgba(37,211,102,0.35);
+    color:var(--green);
+    padding:8px 16px;
+    border-radius:999px;
+    font-size:0.82rem;
+    font-weight:600;
+    margin-bottom:26px;
+  }
+  .pulse-dot{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--green);
+    animation:pulse 1.8s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(37,211,102,0.6);}
+    70%{box-shadow:0 0 0 10px rgba(37,211,102,0);}
+    100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
+  }
+  h1{
+    font-size:clamp(2.1rem, 4.2vw, 3.5rem);
+    font-weight:700;
+    line-height:1.1;
+    margin-bottom:22px;
+    letter-spacing:-1px;
+  }
+  .gradient-text{
+    background:linear-gradient(135deg, var(--violet-2), var(--cyan));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero p.lead{
+    color:var(--text-dim);
+    font-size:clamp(1rem, 1.6vw, 1.15rem);
+    max-width:520px;
+    margin-bottom:32px;
+  }
+  .hero-cta{ display:flex; flex-direction:column; align-items:flex-start; gap:14px; }
+  .btn-lg{ font-size:1.1rem; padding:18px 32px; }
+  .hero-note{ color:var(--text-dim); font-size:0.85rem; }
+  .avatars{ display:flex; align-items:center; gap:10px; margin-top:30px; color:var(--text-dim); font-size:0.9rem; flex-wrap:wrap; }
+  .avatar-stack{display:flex;}
+  .avatar-stack span{
+    width:30px; height:30px; border-radius:50%;
+    border:2px solid var(--bg); margin-left:-10px;
+    background:linear-gradient(135deg, var(--violet), var(--green));
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.72rem; font-weight:700;
+  }
+  .avatar-stack span:first-child{margin-left:0;}
+  .stars{color:#ffc94b; letter-spacing:2px;}
+
+  /* Hero phone visual */
+  .hero-visual{
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .phone-glow{
+    position:absolute; width:380px; height:380px; border-radius:50%;
+    background:radial-gradient(circle, rgba(34,197,94,0.45), rgba(250,204,21,0.15) 55%, transparent 72%);
+    filter:blur(20px);
+    animation:glowPulse 4s ease-in-out infinite;
+  }
+  @keyframes glowPulse{
+    0%,100%{transform:scale(1); opacity:0.9;}
+    50%{transform:scale(1.08); opacity:1;}
+  }
+  .phone-img{
+    position:relative;
+    width:min(340px, 78vw);
+    animation:floatY 5s ease-in-out infinite;
+    filter:drop-shadow(0 30px 60px rgba(0,0,0,0.6));
+    border-radius:28px;
+  }
+  @keyframes floatY{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-18px) rotate(1deg);}
+  }
+
+  /* Sections */
+  section{padding:70px 0;}
+  .section-title{
+    text-align:center;
+    font-size:clamp(1.6rem, 3vw, 2.2rem);
+    font-weight:700;
+    margin-bottom:12px;
+  }
+  .section-sub{
+    text-align:center;
+    color:var(--text-dim);
+    max-width:560px;
+    margin:0 auto 46px;
+  }
+
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* Benefits */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
+    gap:20px;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--card-border);
+    border-radius:18px;
+    padding:28px 24px;
+    backdrop-filter:blur(10px);
+    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(34,197,94,0.5);
+    box-shadow:0 20px 40px -20px rgba(34,197,94,0.4);
+  }
+  .card-icon{
+    width:48px; height:48px;
+    border-radius:13px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.4rem;
+    margin-bottom:18px;
+    background:linear-gradient(135deg, rgba(34,197,94,0.25), rgba(250,204,21,0.2));
+    border:1px solid rgba(255,255,255,0.08);
+  }
+  .card h3{font-size:1.05rem; margin-bottom:8px; font-weight:600;}
+  .card p{color:var(--text-dim); font-size:0.92rem;}
+
+  /* Showcase */
+  .showcase{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:20px;
+  }
+  .showcase-item{
+    position:relative;
+    display:block;
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid var(--card-border);
+    aspect-ratio:4/5;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .showcase-item img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform .5s ease;
+  }
+  .showcase-item:hover{ transform:translateY(-6px); box-shadow:0 22px 44px -20px rgba(34,197,94,0.5); }
+  .showcase-item:hover img{ transform:scale(1.08); }
+  .showcase-tag{
+    position:absolute; left:12px; bottom:12px; right:12px;
+    background:rgba(4,10,6,0.65);
+    backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:10px;
+    padding:10px 12px;
+    font-size:0.85rem;
+    font-weight:600;
+  }
+
+  /* iPhone catalog */
+  .iphone-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+    gap:22px;
+  }
+  .iphone-card{
+    background:var(--card);
+    border:1px solid var(--card-border);
+    border-radius:20px;
+    padding:16px;
+    text-align:center;
+    backdrop-filter:blur(10px);
+    transition:transform .25s ease, border-color .25s ease;
+  }
+  .iphone-card:hover{ transform:translateY(-6px); border-color:rgba(37,211,102,0.4); }
+  .iphone-card-img{
+    border-radius:14px;
+    overflow:hidden;
+    aspect-ratio:3/4;
+    margin-bottom:14px;
+  }
+  .iphone-card-img img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .iphone-card h3{ font-size:1.05rem; font-weight:600; margin-bottom:14px; }
+  .iphone-card .btn{ width:100%; justify-content:center; font-size:0.9rem; padding:12px 14px; }
+
+  /* Steps */
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:24px;
+  }
+  .step{
+    position:relative;
+    background:var(--card);
+    border:1px solid var(--card-border);
+    border-radius:18px;
+    padding:32px 22px 24px;
+    text-align:center;
+    backdrop-filter:blur(10px);
+  }
+  .step-num{
+    width:40px; height:40px;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--violet), var(--cyan));
+    color:#0a0a0a;
+    font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 18px;
+    box-shadow:0 0 24px -4px rgba(34,197,94,0.7);
+  }
+  .step h3{margin-bottom:8px; font-size:1.05rem; font-weight:600;}
+  .step p{color:var(--text-dim); font-size:0.9rem;}
+
+  /* Banner */
+  .cta-banner{
+    position:relative;
+    background:linear-gradient(160deg, rgba(34,197,94,0.16), rgba(250,204,21,0.08));
+    border:1px solid rgba(34,197,94,0.35);
+    border-radius:28px;
+    padding:56px 30px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .cta-banner::before{
+    content:"";
+    position:absolute; inset:-40%;
+    background:radial-gradient(circle at 50% 0%, rgba(37,211,102,0.18), transparent 60%);
+    pointer-events:none;
+  }
+  .cta-banner h2{font-size:clamp(1.5rem,3vw,2.1rem); margin-bottom:14px; font-weight:700; position:relative;}
+  .cta-banner p{color:var(--text-dim); margin-bottom:30px; max-width:520px; margin-left:auto; margin-right:auto; position:relative;}
+  .cta-banner .btn{position:relative;}
+
+  /* Instagram */
+  .insta-card{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:20px; flex-wrap:wrap;
+    background:var(--card);
+    border:1px solid var(--card-border);
+    border-radius:22px;
+    padding:32px;
+    backdrop-filter:blur(10px);
+  }
+  .insta-left{display:flex; align-items:center; gap:18px;}
+  .insta-icon{
+    width:58px; height:58px; border-radius:50%;
+    object-fit:cover;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.12), 0 0 24px -4px rgba(250,204,21,0.6);
+  }
+  .insta-left h3{font-size:1.1rem; margin-bottom:4px; font-weight:600;}
+  .insta-left p{color:var(--text-dim); font-size:0.9rem;}
+
+  /* Store / location */
+  .store-card{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    background:var(--card);
+    border:1px solid var(--card-border);
+    border-radius:22px;
+    padding:28px;
+    backdrop-filter:blur(10px);
+    align-items:stretch;
+  }
+  .store-info{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    justify-content:center;
+  }
+  .store-badge{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid var(--card-border);
+    border-radius:14px;
+    padding:14px 16px;
+  }
+  .store-badge-icon{ font-size:1.6rem; }
+  .store-badge strong{ display:block; font-size:1rem; }
+  .store-badge span{ color:var(--text-dim); font-size:0.85rem; }
+  .store-address{ display:flex; flex-direction:column; gap:4px; }
+  .store-line{ color:var(--text-dim); font-size:0.95rem; }
+  .store-info .btn{ align-self:flex-start; }
+  .store-map{
+    border-radius:16px;
+    overflow:hidden;
+    min-height:260px;
+    border:1px solid var(--card-border);
+  }
+  .store-map iframe{ width:100%; height:100%; min-height:260px; border:0; display:block; }
+  @media (max-width:800px){
+    .store-card{ grid-template-columns:1fr; }
+    .store-info{ order:2; }
+    .store-map{ order:1; }
+  }
+
+  /* FAQ */
+  .faq-item{ border-bottom:1px solid var(--card-border); padding:20px 0; }
+  .faq-item summary{
+    cursor:pointer; font-weight:600; list-style:none;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:"+"; font-size:1.4rem; color:var(--violet-2);
+    transition:transform .2s ease;
+  }
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item p{color:var(--text-dim); margin-top:12px; font-size:0.92rem;}
+
+  /* Footer */
+  footer{
+    border-top:1px solid var(--card-border);
+    padding:44px 0 110px;
+    text-align:center;
+    color:var(--text-dim);
+    font-size:0.85rem;
+  }
+  footer .foot-links{ display:flex; justify-content:center; gap:20px; margin-top:14px; flex-wrap:wrap; }
+
+  /* Floating WhatsApp button */
+  .float-wa{
+    position:fixed; bottom:24px; right:24px; z-index:60;
+    width:62px; height:62px; border-radius:50%;
+    background:linear-gradient(135deg, var(--green), var(--green-dark));
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.5rem;
+    box-shadow:0 0 0 1px rgba(37,211,102,0.4), 0 12px 30px -6px rgba(37,211,102,0.9);
+    animation:float 2.6s ease-in-out infinite;
+  }
+  @keyframes float{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-7px);} }
+  .float-wa::before{
+    content:""; position:absolute; inset:-6px; border-radius:50%;
+    border:2px solid rgba(37,211,102,0.4);
+    animation:ring 2s ease-out infinite;
+  }
+  @keyframes ring{
+    0%{transform:scale(0.9); opacity:0.9;}
+    100%{transform:scale(1.5); opacity:0;}
+  }
+
+  @media (max-width:900px){
+    .hero{ grid-template-columns:1fr; text-align:center; padding-top:50px; }
+    .hero p.lead{ margin-left:auto; margin-right:auto; }
+    .hero-cta{ align-items:center; }
+    .avatars{ justify-content:center; }
+    .hero-visual{ order:-1; margin-bottom:10px; }
+    .phone-img{ width:min(280px, 60vw); }
+  }
+  @media (max-width:640px){
+    .insta-card{flex-direction:column; text-align:center;}
+    .insta-left{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-fx">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="grid-overlay"></div>
+  <div class="noise"></div>
+</div>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <img class="logo-mark" src="assets/logo.jpg" alt="Logo Kactus">
+      Kactus
+    </div>
+    <a class="btn btn-whatsapp btn-small" href="https://wa.me/5571982459149?text=Ol%C3%A1%21%20Quero%20entrar%20no%20grupo%20VIP%20de%20ofertas%20da%20Kactus." target="_blank" rel="noopener">
+      Entrar no Grupo
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div>
+      <div class="badge"><span class="pulse-dot"></span> Grupo VIP gratuito</div>
+      <h1>O futuro das <span class="gradient-text">ofertas em celulares</span> chega primeiro no seu WhatsApp</h1>
+      <p class="lead">Entre no grupo VIP da Kactus e receba promoções relâmpago, avisos de estoque e iPhones e Androids lacrados com brindes exclusivos antes de todo mundo — sem spam, só oferta boa.</p>
+      <div class="hero-cta">
+        <a class="btn btn-whatsapp btn-lg" href="https://wa.me/5571982459149?text=Ol%C3%A1%21%20Quero%20entrar%20no%20grupo%20VIP%20de%20ofertas%20da%20Kactus." target="_blank" rel="noopener">
+          <span>💬</span> Entrar no Grupo do WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="https://wa.me/5571982459149?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20da%20Kactus%20e%20quero%20atendimento." target="_blank" rel="noopener">
+          Falar com a loja no WhatsApp
+        </a>
+        <span class="hero-note">É grátis e leva 5 segundos para entrar</span>
+      </div>
+      <div class="avatars">
+        <div class="avatar-stack"><span>M</span><span>J</span><span>A</span><span>L</span><span>+</span></div>
+        <span><strong style="color:var(--text)">+85 mil seguidores</strong> no Instagram</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="phone-glow"></div>
+      <img class="phone-img" src="assets/hero.svg" alt="Smartphones em destaque na Kactus">
+    </div>
+  </section>
+
+  <section class="wrap reveal">
+    <h2 class="section-title">Por que entrar no grupo?</h2>
+    <p class="section-sub">Tudo que você precisa para nunca mais pagar caro em smartphone e acessórios.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="card-icon">🔥</div>
+        <h3>Ofertas exclusivas</h3>
+        <p>Descontos que não aparecem em nenhum outro lugar, só para o grupo.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Primeiro a saber</h3>
+        <p>Promoções relâmpago avisadas em tempo real, antes de esgotar.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎁</div>
+        <h3>Brindes exclusivos</h3>
+        <p>Condições especiais e brindes liberados só para quem está no grupo.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔕</div>
+        <h3>Sem spam</h3>
+        <p>Só mandamos mensagem quando tem oferta boa de verdade.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap reveal">
+    <h2 class="section-title">O que rola por lá</h2>
+    <p class="section-sub">Uma prévia do que a gente posta direto do Instagram — do jeito Kactus de ser.</p>
+    <div class="showcase">
+      <a class="showcase-item" href="https://www.instagram.com/lojakactusoficial" target="_blank" rel="noopener">
+        <img src="assets/showcase-1.svg" alt="Acessórios para celular na Kactus" loading="lazy">
+        <span class="showcase-tag">Acessórios para o seu celular</span>
+      </a>
+      <a class="showcase-item" href="https://www.instagram.com/lojakactusoficial" target="_blank" rel="noopener">
+        <img src="assets/showcase-2.svg" alt="Smartwatch e fones na Kactus" loading="lazy">
+        <span class="showcase-tag">Smartwatch e acessórios de áudio</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap reveal">
+    <h2 class="section-title">Escolha o seu aparelho</h2>
+    <p class="section-sub">Chama no WhatsApp e garanta o seu com o melhor preço.</p>
+    <div class="iphone-grid">
+      <div class="iphone-card">
+        <div class="iphone-card-img"><img src="assets/iphone-14-pro-max.svg" alt="iPhone 14 Pro Max 128GB na Kactus" loading="lazy"></div>
+        <h3>iPhone 14 Pro Max 128GB</h3>
+        <a class="btn btn-whatsapp" href="https://wa.me/5571982459149?text=Ol%C3%A1%21%20Eu%20quero%20efetuar%20a%20compra%20do%20iPhone%2014%20Pro%20Max%20128GB." target="_blank" rel="noopener">
+          <span>💬</span> Comprar no WhatsApp
+        </a>
+      </div>
+      <div class="iphone-card">
+        <div class="iphone-card-img"><img src="assets/iphone-13-pro.svg" alt="iPhone 13 Pro 512GB na Kactus" loading="lazy"></div>
+        <h3>iPhone 13 Pro 512GB</h3>
+        <a class="btn btn-whatsapp" href="https://wa.me/5571982459149?text=Ol%C3%A1%21%20Eu%20quero%20efetuar%20a%20compra%20do%20iPhone%2013%20Pro%20512GB." target="_blank" rel="noopener">
+          <span>💬</span> Comprar no WhatsApp
+        </a>
+      </div>
+      <div class="iphone-card">
+        <div class="iphone-card-img"><img src="assets/iphone-11.svg" alt="iPhone 11 64GB na Kactus" loading="lazy"></div>
+        <h3>iPhone 11 64GB</h3>
+        <a class="btn btn-whatsapp" href="https://wa.me/5571982459149?text=Ol%C3%A1%21%20Eu%20quero%20efetuar%20a%20compra%20do%20iPhone%2011%2064GB." target="_blank" rel="noopener">
+          <span>💬</span> Comprar no WhatsApp
+        </a>
+      </div>
+      <div class="iphone-card">
+        <div class="iphone-card-img"><img src="assets/androids.svg" alt="Androids lacrados na Kactus" loading="lazy"></div>
+        <h3>Androids lacrados</h3>
+        <a class="btn btn-whatsapp" href="https://wa.me/5571982459149?text=Ol%C3%A1%21%20Quero%20ver%20os%20Androids%20lacrados%20dispon%C3%ADveis." target="_blank" rel="noopener">
+          <span>💬</span> Ver no WhatsApp
+        </a>
+      </div>
+    </div>
+    <p class="section-sub" style="margin-top:28px; font-size:0.85rem;">Modelos, cores e valores atualizados direto no WhatsApp.</p>
+  </section>
+
+  <section class="wrap reveal">
+    <h2 class="section-title">Como funciona</h2>
+    <p class="section-sub">Simples assim, em 3 passos.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Clique no botão</h3>
+        <p>Toque em "Entrar no Grupo" em qualquer parte da página.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Entre no WhatsApp</h3>
+        <p>Você será direcionado direto para o grupo oficial da Kactus.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Aproveite as ofertas</h3>
+        <p>Fique de olho nas mensagens e garanta o seu desconto antes que acabe.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap reveal">
+    <div class="cta-banner">
+      <h2>Não fique de fora da próxima promoção</h2>
+      <p>Entre agora no grupo VIP, receba as ofertas primeiro e garanta o seu lugar na fila das promoções.</p>
+      <a class="btn btn-whatsapp btn-lg" href="https://wa.me/5571982459149?text=Ol%C3%A1%21%20Quero%20entrar%20no%20grupo%20VIP%20de%20ofertas%20da%20Kactus." target="_blank" rel="noopener">
+        <span>💬</span> Quero Entrar no Grupo Agora
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap reveal">
+    <div class="insta-card">
+      <div class="insta-left">
+        <img class="insta-icon" src="assets/logo.jpg" alt="Logo Kactus">
+        <div>
+          <h3>Siga @lojakactusoficial</h3>
+          <p>Acompanhe lançamentos, bastidores e mais ofertas no Instagram.</p>
+        </div>
+      </div>
+      <a class="btn btn-ghost" href="https://www.instagram.com/lojakactusoficial" target="_blank" rel="noopener">
+        Seguir no Instagram
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap reveal">
+    <h2 class="section-title">Loja física de portas abertas</h2>
+    <p class="section-sub">Venha conhecer a Kactus pessoalmente em Salvador.</p>
+    <div class="store-card">
+      <div class="store-info">
+        <div class="store-badge">
+          <span class="store-badge-icon">🕘</span>
+          <div>
+            <strong>Horário de atendimento</strong>
+            <span>Segunda a sábado · 09:00 às 20:00</span>
+          </div>
+        </div>
+        <div class="store-address">
+          <span class="store-line"><strong>📍 Shopping Piedade</strong></span>
+          <span class="store-line">Piso L1 — Salvador, BA</span>
+          <span class="store-line">Em frente à Academia Smart Fit</span>
+        </div>
+        <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Shopping+Piedade%2C+Salvador+-+BA" target="_blank" rel="noopener">
+          Ver no Google Maps
+        </a>
+      </div>
+      <div class="store-map">
+        <iframe
+          src="https://www.google.com/maps?q=Shopping+Piedade%2C+Salvador+-+BA&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap reveal">
+    <h2 class="section-title">Perguntas frequentes</h2>
+    <div style="max-width:680px; margin:0 auto;">
+      <details class="faq-item" open>
+        <summary>O grupo é gratuito?</summary>
+        <p>Sim, totalmente gratuito. Basta clicar no botão e entrar pelo WhatsApp.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Vou receber muitas mensagens?</summary>
+        <p>Não. Só enviamos avisos quando existe uma oferta ou promoção relevante.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Posso sair quando quiser?</summary>
+        <p>Claro, você pode sair do grupo a qualquer momento diretamente pelo WhatsApp.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <img src="assets/logo.jpg" alt="Logo Kactus" style="width:44px; height:44px; border-radius:50%; margin:0 auto 14px; box-shadow:0 0 0 1px rgba(255,255,255,0.12);">
+  <div>© <span id="year"></span> Kactus. Todos os direitos reservados.</div>
+  <div class="foot-links">
+    <a href="https://wa.me/5571982459149?text=Ol%C3%A1%21%20Quero%20entrar%20no%20grupo%20VIP%20de%20ofertas%20da%20Kactus." target="_blank" rel="noopener">Grupo do WhatsApp</a>
+    <a href="https://wa.me/5571982459149?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20da%20Kactus." target="_blank" rel="noopener">Falar com a loja</a>
+    <a href="https://www.instagram.com/lojakactusoficial" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/5571982459149?text=Ol%C3%A1%21%20Quero%20entrar%20no%20grupo%20VIP%20de%20ofertas%20da%20Kactus." target="_blank" rel="noopener" aria-label="Entrar no grupo do WhatsApp">
+  💬
+</a>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

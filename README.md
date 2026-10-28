@@ -4,11 +4,11 @@ Landing page estática (HTML/CSS/JS puro, sem build) para direcionar visitantes 
 
 - Instagram: https://www.instagram.com/lojakactusoficial
 - WhatsApp da loja: https://wa.me/5571982459149
-- Botão do grupo: https://wa.me/5571982459149?text=Ol%C3%A1%21%20Quero%20entrar%20no%20grupo%20VIP%20de%20ofertas%20da%20Kactus.
+- Botão do grupo: https://chat.whatsapp.com/JLhl3FEWfo8LN2ecGwJcOk?mode=gi_t
 
 ## Trocar o link do grupo
 
-Substitua o link nos botões (busca e troca de `https://wa.me/5571982459149?text=Ol%C3%A1%21%20Quero%20entrar%20no%20grupo%20VIP%20de%20ofertas%20da%20Kactus.` no `index.html`).
+Substitua o link nos botões (busca e troca de `https://chat.whatsapp.com/JLhl3FEWfo8LN2ecGwJcOk?mode=gi_t` no `index.html`).
 
 ## Rodando localmente
 

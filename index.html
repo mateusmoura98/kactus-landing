@@ -733,6 +733,23 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // Celular: abre o convite do grupo direto no app do WhatsApp (sem página intermediária).
+  // Se o app não abrir, cai no link normal do grupo.
+  (function () {
+    var code = 'JLhl3FEWfo8LN2ecGwJcOk';
+    if (!/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) return;
+    document.querySelectorAll('a[href*="chat.whatsapp.com/' + code + '"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        var web = a.href, t = Date.now();
+        window.location.href = 'whatsapp://chat?code=' + code;
+        setTimeout(function () {
+          if (!document.hidden && Date.now() - t < 2500) window.location.href = web;
+        }, 1200);
+      });
+    });
+  })();
+
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
